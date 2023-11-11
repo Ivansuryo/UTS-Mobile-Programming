@@ -1,0 +1,37 @@
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // Data dummy untuk RecyclerView
+        val articleList = createDummyData()
+
+        // Inisialisasi RecyclerView
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = ArticleAdapter(articleList)
+
+        // Set adapter untuk RecyclerView
+        recyclerView.adapter = adapter
+
+        // Tambahkan click listener untuk menangani item RecyclerView yang diklik
+        adapter.setOnItemClickListener { position ->
+            // Buka Halaman Detail saat item diklik
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("article", articleList[position])
+            startActivity(intent)
+        }
+    }
+
+    // Fungsi untuk membuat data dummy
+    private fun createDummyData(): List<Article> {
+        val articleList = mutableListOf<Article>()
+        // Tambahkan 10 item dummy
+        for (i in 1..10) {
+            val article = Article("Judul Artikel $i", "Deskripsi singkat artikel $i")
+            articleList.add(article)
+        }
+        return articleList
+    }
+}
