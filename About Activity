@@ -1,0 +1,19 @@
+class AboutActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_about)
+
+        // Tampilkan informasi diri pada halaman about
+        val photoImageView: ImageView = findViewById(R.id.photoImageView)
+        val nameTextView: TextView = findViewById(R.id.nameTextView)
+        val nimTextView: TextView = findViewById(R.id.nimTextView)
+        val emailTextView: TextView = findViewById(R.id.emailTextView)
+
+        // Isi informasi diri
+        photoImageView.setImageResource(R.drawable.your_photo)
+        nameTextView.text = "Your Name"
+        nimTextView.text = "Your NIM"
+        emailTextView.text = "Your Email"
+    }
+}
