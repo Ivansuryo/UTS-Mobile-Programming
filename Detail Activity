@@ -1,0 +1,17 @@
+class DetailActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_detail)
+
+        // Dapatkan data dari intent
+        val article = intent.getSerializableExtra("article") as Article
+
+        // Tampilkan data pada halaman detail
+        val titleTextView: TextView = findViewById(R.id.titleTextView)
+        val descriptionTextView: TextView = findViewById(R.id.descriptionTextView)
+
+        titleTextView.text = article.title
+        descriptionTextView.text = article.description
+    }
+}
